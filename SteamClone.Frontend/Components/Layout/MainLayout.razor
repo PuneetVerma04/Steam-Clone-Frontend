@@ -22,17 +22,18 @@
 
         <MudButton Href="/" Variant="Variant.Text" Class="nav-link">STORE</MudButton>
         <MudButton Href="/cart" Variant="Variant.Text" Class="nav-link">CART</MudButton>
+        <!--<MudButton Href="/orders" Variant="Variant.Text" Class="nav-link">MY ORDERS</MudButton>-->
 
         <AuthorizeView>
             <Authorized>
-                <MudTooltip Arrow="true" Placement="Placement.Bottom">
-                    <ChildContent>
+                <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" LockScroll="true">
+                    <ActivatorContent>
                         <MudAvatar Color="Color.Secondary" Variant="Variant.Outlined" Class="ml-4"
-                            Style="border-width: 2px;">
+                            Style="border-width: 2px; cursor: pointer;">
                             @context.User.Identity?.Name?.Substring(0, 1).ToUpper()
                         </MudAvatar>
-                    </ChildContent>
-                    <TooltipContent>
+                    </ActivatorContent>
+                    <ChildContent>
                         <MudPaper Class="pa-3 d-flex flex-column gap-2" Elevation="0"
                             Style="min-width: 150px; background: #1E1E1E;">
                             <MudText Typo="Typo.subtitle1" Color="Color.Secondary"><b>@context.User.Identity?.Name</b>
@@ -44,8 +45,8 @@
                                 Disconnect
                             </MudButton>
                         </MudPaper>
-                    </TooltipContent>
-                </MudTooltip>
+                    </ChildContent>
+                </MudMenu>
             </Authorized>
             <NotAuthorized>
                 <MudButton Href="/login" Variant="Variant.Filled" Color="Color.Secondary" Class="ml-4"
@@ -68,32 +69,17 @@
     {
         PaletteDark = new PaletteDark()
         {
-            // The "Void" Background
             Background = "#0a0a0a",
-
-            // The "Concrete" Surface
             Surface = "#141414",
-
-            // Dark App Bar
             AppbarBackground = "#141414",
-
-            // Primary Text (Off-White for less eye strain)
             TextPrimary = "#e0e0e0",
             TextSecondary = "#9e9e9e",
-
-            // Primary Color: Cool Slate Grey (For headers, icons)
             Primary = "#90A4AE",
-
-            // Secondary Color: "Hazard Orange" (For Buttons, Highlights, Logo)
             Secondary = "#FF9800",
-
-            // Action colors
-            Success = "#00E676", // Neon Green
-            Error = "#FF5252", // Bright Red
-            Info = "#29B6F6", // Bright Blue
-            Warning = "#FFC107", // Amber
-
-            // Borders
+            Success = "#00E676",
+            Error = "#FF5252",
+            Info = "#29B6F6",
+            Warning = "#FFC107",
             LinesDefault = "#333333"
         },
         Typography = new Typography()
@@ -109,13 +95,14 @@
         },
         LayoutProperties = new LayoutProperties()
         {
-            DefaultBorderRadius = "2px" // Sharper, more industrial corners
+            DefaultBorderRadius = "2px"
         }
     };
 
     private string GetEmail(System.Security.Claims.ClaimsPrincipal user)
     {
-        return user.FindFirst("email")?.Value ?? user.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "Unknown";
+        return user.FindFirst("email")?.Value ?? user.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ??
+        "Unknown";
     }
 
     private async Task Logout()
