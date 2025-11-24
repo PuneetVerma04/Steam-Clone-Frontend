@@ -1,7 +1,10 @@
 @page "/"
+@using Microsoft.AspNetCore.Components.Authorization
 @inject ICatalogService CatalogService
 @inject ICartService CartService
 @inject ISnackbar Snackbar
+@inject NavigationManager Nav
+@inject AuthenticationStateProvider AuthStateProvider
 
 <MudText Typo="Typo.h3" Class="mb-4">Top Games</MudText>
 
@@ -23,7 +26,8 @@ else
                         <MudText Typo="Typo.h6" Color="Color.Success">$@game.Price</MudText>
                     </MudCardContent>
                     <MudCardActions>
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => AddToCart(game))">Add to Cart
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => AddToCart(game))">
+                            Add to Cart
                         </MudButton>
                     </MudCardActions>
                 </MudCard>
@@ -42,6 +46,19 @@ else
 
     private async Task AddToCart(GameResponseDTO game)
     {
+        // 1. Get the current user state
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        // 2. Check if they are logged in
+        if (user.Identity is null || !user.Identity.IsAuthenticated)
+        {
+            // 3. Prompt to login and redirect
+            Snackbar.Add("Please login to add items to your cart.", Severity.Info);
+            return;
+        }
+
+        // 4. Proceed if authorized
         await CartService.AddToCartAsync(game.Id);
         Snackbar.Add($"{game.Title} added to cart", Severity.Success);
     }
