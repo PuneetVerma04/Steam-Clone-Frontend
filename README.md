@@ -1,4 +1,4 @@
-# Steam Clone Frontend (Blazor Server)
+# Gray Zone Frontend (Blazor Server)
 
 A modern Steam-like storefront built with **Blazor Server** and **MudBlazor**. This project demonstrates a dynamic catalog, interactive cart, and checkout workflow, fully integrated with a RESTful backend.
 
