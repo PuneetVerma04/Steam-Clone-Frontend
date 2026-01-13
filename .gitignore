@@ -77,3 +77,9 @@ Thumbs.db
 /.vs/Steam Clone Front
 /SteamClone.Frontend/wwwroot/lib/bootstrap/dist
 *.csproj
+
+
+#Image files
+*.png
+*.jpg
+*.jpeg
