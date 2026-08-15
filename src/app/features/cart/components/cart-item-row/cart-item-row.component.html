@@ -1,0 +1,40 @@
+<div class="cart-row">
+  <!-- Cover image -->
+  <div class="cart-row__image-col">
+    <img class="cart-row__image"
+         [src]="item.imageUrl"
+         [alt]="item.title + ' cover art'"
+         (error)="onImageError($event)" />
+  </div>
+
+  <!-- Title + qty stepper -->
+  <div class="cart-row__center-col">
+    <span class="cart-row__title">{{ item.title }}</span>
+    <div class="cart-row__stepper">
+      <button mat-icon-button
+              class="cart-row__stepper-btn"
+              [attr.aria-label]="'Decrease quantity of ' + item.title"
+              (click)="onDecrement()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span class="cart-row__qty" aria-live="polite">{{ item.quantity }}</span>
+      <button mat-icon-button
+              class="cart-row__stepper-btn"
+              [attr.aria-label]="'Increase quantity of ' + item.title"
+              (click)="onIncrement()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Price + remove -->
+  <div class="cart-row__right-col">
+    <span class="cart-row__price">{{ item.price | currency:'USD':'symbol':'1.2-2' }}</span>
+    <button mat-icon-button
+            class="cart-row__remove-btn"
+            [attr.aria-label]="'Remove ' + item.title + ' from cart'"
+            (click)="onRemove()">
+      <mat-icon>delete_outline</mat-icon>
+    </button>
+  </div>
+</div>

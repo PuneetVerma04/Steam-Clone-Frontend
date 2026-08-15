@@ -1,0 +1,169 @@
+@use 'assets/styles/variables' as vars;
+@use 'assets/styles/mixins' as mix;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  padding: 0 vars.$spacing-lg;
+  background-color: vars.$color-surface;          // #4B3D37 per D-02
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: vars.$shadow-md;
+
+  &__logo {
+    flex: 0 0 auto;
+
+    &-link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    &-img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-xl;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+
+    @include mix.mobile {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: vars.$color-surface;
+      padding: vars.$spacing-md vars.$spacing-lg vars.$spacing-lg;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      gap: vars.$spacing-sm;
+      z-index: 999;
+
+      &--open {
+        display: flex;
+      }
+    }
+  }
+
+  &__link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: vars.$color-text-secondary;
+    text-decoration: none;
+    padding: vars.$spacing-xs vars.$spacing-sm;
+    border-radius: vars.$border-radius-sm;
+    transition: color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      color: vars.$color-text-primary;
+      background-color: vars.$color-surface-light;
+    }
+
+    &--active {
+      color: vars.$color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+    flex: 0 0 auto;
+  }
+
+  &__cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: vars.$color-text-secondary;
+    text-decoration: none;
+    padding: vars.$spacing-xs;
+    border-radius: 50%;
+    transition: color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      color: vars.$color-text-primary;
+      background-color: vars.$color-surface-light;
+    }
+
+    mat-icon { font-size: 1.5rem; }
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background-color: vars.$color-primary;
+    color: #ffffff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 9px;
+  }
+
+  &__user-btn {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-xs;
+    color: vars.$color-text-secondary !important;
+
+    &:hover { color: vars.$color-text-primary !important; }
+  }
+
+  &__username {
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+  &__chevron {
+    font-size: 1.25rem !important;
+    transition: transform 0.2s ease;
+  }
+
+  &__auth-link {
+    color: vars.$color-text-secondary !important;
+    font-weight: 500;
+
+    &:hover { color: vars.$color-text-primary !important; }
+  }
+
+  &__auth-cta {
+    background-color: vars.$color-primary !important;
+    color: #ffffff !important;
+    font-weight: 600;
+  }
+
+  // Hamburger: only visible on mobile
+  &__hamburger {
+    display: none;
+    color: vars.$color-text-secondary;
+
+    @include mix.mobile {
+      display: flex;
+    }
+  }
+}

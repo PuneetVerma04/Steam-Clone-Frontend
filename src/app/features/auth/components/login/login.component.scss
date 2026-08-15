@@ -1,0 +1,142 @@
+@use 'sass:color';
+@use 'assets/styles/variables' as vars;
+@use 'assets/styles/mixins' as mix;
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: vars.$spacing-lg;
+  background-color: #1a1614;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(vars.$color-primary, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: cover, 200px 200px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(75, 61, 55, 0.35) 0%, rgba(26, 22, 20, 0.8) 100%);
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.auth-logo {
+  width: 140px;
+  margin-bottom: vars.$spacing-lg;
+
+  @include mix.mobile {
+    width: 100px;
+    margin-bottom: vars.$spacing-md;
+  }
+}
+
+.auth-card {
+  background-color: vars.$color-surface;
+  border-radius: vars.$border-radius-lg;
+  box-shadow: vars.$shadow-xl;
+  padding: vars.$spacing-lg;
+  width: 400px;
+  max-width: 100%;
+
+  @include mix.mobile {
+    padding: vars.$spacing-md;
+  }
+
+  &__title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: vars.$color-text-primary;
+    margin-bottom: vars.$spacing-lg;
+    text-align: center;
+  }
+}
+
+.auth-field {
+  width: 100%;
+  margin-bottom: vars.$spacing-md;
+}
+
+// Override Material default blue focus to earth-tone primary
+.auth-card mat-form-field.mat-focused .mat-mdc-notched-outline__notch,
+.auth-card mat-form-field.mat-focused .mat-mdc-notched-outline__leading,
+.auth-card mat-form-field.mat-focused .mat-mdc-notched-outline__trailing {
+  border-color: vars.$color-primary !important;
+}
+
+.auth-card mat-form-field.mat-focused .mat-mdc-floating-label {
+  color: vars.$color-primary !important;
+}
+
+.auth-error-banner {
+  display: flex;
+  align-items: center;
+  gap: vars.$spacing-sm;
+  background-color: rgba(244, 67, 54, 0.12);
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  border-radius: vars.$border-radius-md;
+  padding: vars.$spacing-sm vars.$spacing-md;
+  margin-bottom: vars.$spacing-md;
+  color: #ffcdd2;
+  font-size: 0.875rem;
+  font-weight: 700;
+  animation: fadeIn 150ms ease-in;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.auth-submit-btn {
+  width: 100%;
+  min-height: 48px;
+  margin-top: vars.$spacing-lg;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: vars.$border-radius-md !important;
+  background-color: vars.$color-primary !important;
+  color: vars.$color-text-primary !important;
+  letter-spacing: 0.02em;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust(vars.$color-primary, $lightness: -10%) !important;
+  }
+
+  &:disabled {
+    background-color: vars.$color-surface-light !important;
+    color: vars.$color-text-muted !important;
+    cursor: not-allowed;
+  }
+}
+
+.auth-secondary-link {
+  display: block;
+  text-align: center;
+  margin-top: vars.$spacing-xl;
+  font-size: 0.875rem;
+  color: vars.$color-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: vars.$color-tertiary;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,40 @@
+@use 'assets/styles/variables' as *;
+
+.catalog {
+  min-height: 100vh;
+  background: $color-background;
+
+  &__filters {
+    position: sticky;
+    top: 64px;
+    z-index: 100;
+    background: $color-background;
+    border-bottom: 1px solid $color-surface;
+  }
+
+  &__content {
+    padding: $spacing-lg;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-desktop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__paginator {
+    background: transparent;
+    color: $color-text-secondary;
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-xl;
+  }
+}

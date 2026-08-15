@@ -1,0 +1,33 @@
+<div class="review-form">
+  <h3 class="review-form__heading">Write a Review</h3>
+  <div class="review-form__star-row">
+    <span class="review-form__star-label">Your Rating</span>
+    <app-star-rating
+      [rating]="reviewForm.get('rating')?.value ?? 0"
+      [interactive]="true"
+      (ratingChange)="onRatingChange($event)">
+    </app-star-rating>
+  </div>
+  <div
+    *ngIf="reviewForm.get('rating')?.errors?.['min'] && reviewForm.get('rating')?.touched"
+    class="review-form__star-error">
+    Please select a rating.
+  </div>
+  <mat-form-field appearance="outline" class="review-form__comment-field">
+    <mat-label>Comment (optional)</mat-label>
+    <textarea
+      matInput
+      [formControl]="$any(reviewForm.get('comment'))"
+      rows="4"
+      maxlength="1000">
+    </textarea>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    class="review-form__submit-btn"
+    [disabled]="submitting"
+    (click)="submit()">
+    <app-spinner *ngIf="submitting" [diameter]="20"></app-spinner>
+    <span *ngIf="!submitting">Submit Review</span>
+  </button>
+</div>

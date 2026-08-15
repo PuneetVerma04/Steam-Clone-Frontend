@@ -1,0 +1,31 @@
+@use 'assets/styles/variables' as vars;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$spacing-xxxl vars.$spacing-lg;
+  text-align: center;
+  gap: vars.$spacing-md;
+
+  &__icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: vars.$color-text-muted;
+    opacity: 0.6;
+  }
+
+  &__message {
+    margin: 0;
+    font-size: 1rem;
+    color: vars.$color-text-secondary;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+
+  &__cta {
+    margin-top: vars.$spacing-sm;
+  }
+}

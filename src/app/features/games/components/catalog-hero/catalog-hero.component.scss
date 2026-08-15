@@ -1,0 +1,93 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.catalog-hero {
+  display: block;
+  width: 100%;
+  height: 420px;
+  --swiper-navigation-color: #{$color-primary};
+  --swiper-navigation-size: 44px;
+  --swiper-pagination-color: #{$color-primary};
+
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(51, 47, 46, 0.95) 0%,
+      rgba(51, 47, 46, 0.4) 50%,
+      transparent 100%
+    );
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $spacing-xxl $spacing-xxxl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    align-items: flex-start;
+  }
+
+  &__genre {
+    display: inline-block;
+    background: $color-surface-light;
+    color: $color-text-primary;
+    border-radius: $border-radius-sm;
+    padding: $spacing-xs $spacing-xs;
+    font-size: 0.75rem;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  &__cta {
+    border-color: $color-primary !important;
+    color: $color-primary !important;
+    min-height: 44px;
+    border-radius: $border-radius-md;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    height: 260px;
+
+    &__content {
+      padding: $spacing-md $spacing-lg;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    ::ng-deep .swiper-button-next,
+    ::ng-deep .swiper-button-prev {
+      display: none;
+    }
+  }
+
+  @media (min-width: #{$breakpoint-mobile + 1px}) and (max-width: $breakpoint-desktop) {
+    height: 320px;
+  }
+}

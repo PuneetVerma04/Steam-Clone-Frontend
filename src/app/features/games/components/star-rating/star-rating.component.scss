@@ -1,0 +1,38 @@
+@use 'assets/styles/variables' as *;
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs; // 4px
+}
+
+.star-rating__icon {
+  color: $color-text-muted; // #999999 — empty star default
+  font-size: 1.25rem;
+  cursor: default;
+  transition: color 100ms ease;
+
+  &--filled {
+    color: $color-primary; // #f55410 — filled star
+  }
+
+  &--hover {
+    color: $color-tertiary; // #ca5e30 — hover preview
+  }
+}
+
+.star-rating--interactive .star-rating__icon {
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

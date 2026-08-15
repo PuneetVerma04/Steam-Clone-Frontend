@@ -1,0 +1,46 @@
+// src/assets/styles/_variables.scss
+// Color Palette — Post-Apocalyptic Earth Tones
+$color-background:    #332f2e;
+$color-surface:       #4b3d37;
+$color-surface-light: #755243;
+$color-secondary:     #a05d40;
+$color-tertiary:      #ca5e30;
+$color-primary:       #f55410;
+
+// Text Colors
+$color-text-primary:   #ffffff;
+$color-text-secondary: #cccccc;
+$color-text-muted:     #999999;
+
+// Semantic Colors
+$color-success: #4caf50;
+$color-error:   #f44336;
+$color-warning: #ff9800;
+$color-info:    #2196f3;
+
+// Spacing (8px grid)
+$spacing-xs:   4px;
+$spacing-sm:   8px;
+$spacing-md:   16px;
+$spacing-lg:   24px;
+$spacing-xl:   32px;
+$spacing-xxl:  48px;
+$spacing-xxxl: 64px;
+
+// Border Radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+$shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
+
+// Breakpoints
+$breakpoint-mobile:  640px;
+$breakpoint-tablet:  768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide:    1440px;

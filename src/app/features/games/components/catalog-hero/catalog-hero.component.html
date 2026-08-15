@@ -1,0 +1,31 @@
+<swiper-container
+  class="catalog-hero"
+  aria-label="Featured games"
+  effect="fade"
+  autoplay-delay="4000"
+  autoplay-disable-on-interaction="false"
+  autoplay-pause-on-mouse-enter="true"
+  navigation="true"
+  pagination="true"
+  pagination-clickable="true"
+>
+  <swiper-slide *ngFor="let game of games" class="catalog-hero__slide">
+    <img
+      [src]="game.imageUrl"
+      [alt]="game.title + ' cover art'"
+      class="catalog-hero__bg"
+    />
+    <div class="catalog-hero__overlay"></div>
+    <div class="catalog-hero__content">
+      <span class="catalog-hero__genre">{{ game.genre }}</span>
+      <h2 class="catalog-hero__title">{{ game.title }}</h2>
+      <a
+        mat-stroked-button
+        [routerLink]="['/games', game.id]"
+        class="catalog-hero__cta"
+      >
+        View Game
+      </a>
+    </div>
+  </swiper-slide>
+</swiper-container>

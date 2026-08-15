@@ -1,0 +1,51 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md; // 16px
+  margin-top: $spacing-lg; // 24px
+}
+
+.review-form__heading {
+  font-family: $font-heading;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm;
+}
+
+.review-form__star-row {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm; // 8px
+}
+
+.review-form__star-label {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-secondary;
+  flex-shrink: 0;
+}
+
+.review-form__star-error {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-error;
+}
+
+.review-form__comment-field {
+  width: 100%;
+}
+
+.review-form__submit-btn {
+  background-color: $color-primary;
+  color: #fff;
+  align-self: flex-end;
+
+  @media (max-width: 640px) {
+    width: 100%;
+    align-self: stretch;
+  }
+}

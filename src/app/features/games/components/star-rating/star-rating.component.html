@@ -1,0 +1,20 @@
+<span
+  class="star-rating"
+  [class.star-rating--interactive]="interactive"
+  [attr.role]="interactive ? 'radiogroup' : null"
+  [attr.aria-hidden]="!interactive ? 'true' : null"
+  (mouseleave)="onMouseLeave()">
+  <mat-icon
+    *ngFor="let star of stars"
+    class="star-rating__icon"
+    [class.star-rating__icon--filled]="getStarIcon(star) === 'star'"
+    [class.star-rating__icon--hover]="isHovered(star)"
+    [attr.role]="interactive ? 'radio' : null"
+    [attr.aria-label]="interactive ? (star + ' stars') : null"
+    [attr.aria-checked]="interactive ? (rating === star) : null"
+    (click)="onStarClick(star)"
+    (mouseenter)="onStarHover(star)">
+    {{ getStarIcon(star) }}
+  </mat-icon>
+  <span *ngIf="!interactive" class="sr-only">{{ rating | number:'1.1-1' }} out of 5 stars</span>
+</span>

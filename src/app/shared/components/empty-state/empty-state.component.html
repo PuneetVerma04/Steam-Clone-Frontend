@@ -1,0 +1,13 @@
+<div class="empty-state" role="status">
+  <mat-icon class="empty-state__icon">inbox</mat-icon>
+  <p class="empty-state__message">{{ message }}</p>
+  <a
+    *ngIf="ctaLabel && ctaLink"
+    [routerLink]="ctaLink"
+    mat-raised-button
+    color="primary"
+    class="empty-state__cta"
+  >
+    {{ ctaLabel }}
+  </a>
+</div>

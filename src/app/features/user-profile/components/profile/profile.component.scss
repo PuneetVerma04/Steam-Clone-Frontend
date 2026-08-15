@@ -1,0 +1,99 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.profile-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: $spacing-xxxl $spacing-lg $spacing-xl;
+}
+
+.profile-page__heading {
+  font-family: $font-heading;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-xl;
+}
+
+.profile-page__spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-xl 0;
+}
+
+.profile-panel {
+  background: $color-surface;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+}
+
+.profile-panel__header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $spacing-md;
+}
+
+.profile-panel__edit-btn {
+  color: $color-text-secondary;
+}
+
+.profile-panel__field {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.profile-panel__label {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-secondary;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.profile-panel__value {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-primary;
+}
+
+.profile-panel__role-pill {
+  display: inline-block;
+  background: rgba(245, 84, 16, 0.15);
+  color: $color-tertiary;
+  border-radius: $border-radius-sm;
+  padding: 2px $spacing-sm;
+  font-size: 0.875rem;
+  font-family: $font-body;
+}
+
+.profile-panel__input-field {
+  width: 100%;
+}
+
+.profile-panel__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.profile-panel__save-btn {
+  background-color: $color-primary;
+  color: #fff;
+}

@@ -1,0 +1,98 @@
+<div class="profile-page">
+  <h1 class="profile-page__heading">My Profile</h1>
+
+  <!-- Loading state -->
+  <ng-container *ngIf="loading">
+    <div class="profile-page__spinner-wrapper">
+      <app-spinner [diameter]="40"></app-spinner>
+    </div>
+  </ng-container>
+
+  <!-- Load error state -->
+  <ng-container *ngIf="!loading && loadError">
+    <app-empty-state message="Couldn't load your profile. Please try again."></app-empty-state>
+  </ng-container>
+
+  <!-- Profile content -->
+  <ng-container *ngIf="!loading && !loadError && user">
+
+    <!-- === VIEW MODE === -->
+    <ng-container *ngIf="!editMode">
+      <div class="profile-panel">
+        <div class="profile-panel__header">
+          <button
+            mat-stroked-button
+            class="profile-panel__edit-btn"
+            (click)="enableEdit()">
+            <mat-icon>edit</mat-icon>
+            Edit Profile
+          </button>
+        </div>
+
+        <div class="profile-panel__field">
+          <span class="profile-panel__label">Username</span>
+          <span class="profile-panel__value">{{ user.username }}</span>
+        </div>
+
+        <div class="profile-panel__field">
+          <span class="profile-panel__label">Email</span>
+          <span class="profile-panel__value">{{ user.email }}</span>
+        </div>
+
+        <div class="profile-panel__field">
+          <span class="profile-panel__label">Role</span>
+          <span class="profile-panel__role-pill">{{ user.role }}</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- === EDIT MODE === -->
+    <ng-container *ngIf="editMode">
+      <div class="profile-panel" [formGroup]="profileForm">
+        <div class="profile-panel__field">
+          <mat-form-field appearance="outline" class="profile-panel__input-field">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            <mat-error *ngIf="profileForm.get('username')?.errors?.['required']">
+              Username is required.
+            </mat-error>
+            <mat-error *ngIf="profileForm.get('username')?.errors?.['minlength']">
+              Username must be at least 3 characters.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="profile-panel__field">
+          <mat-form-field appearance="outline" class="profile-panel__input-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-error *ngIf="profileForm.get('email')?.errors?.['required']">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="profileForm.get('email')?.errors?.['email']">
+              Enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="profile-panel__field">
+          <span class="profile-panel__label">Role</span>
+          <span class="profile-panel__role-pill">{{ user.role }}</span>
+        </div>
+
+        <div class="profile-panel__actions">
+          <button mat-button (click)="cancelEdit()">Cancel</button>
+          <button
+            mat-flat-button
+            class="profile-panel__save-btn"
+            [disabled]="saving"
+            (click)="save()">
+            <app-spinner *ngIf="saving" [diameter]="20"></app-spinner>
+            <span *ngIf="!saving">Save Changes</span>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+
+  </ng-container>
+</div>

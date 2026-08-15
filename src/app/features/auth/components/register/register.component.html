@@ -1,0 +1,74 @@
+<div class="auth-page">
+  <img src="assets/images/logo.png" alt="Gray Zone" class="auth-logo" />
+
+  <div class="auth-card">
+    <h2 class="auth-card__title">Create Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" autocomplete="username" />
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Email address</mat-label>
+        <input matInput type="email" formControlName="email" autocomplete="email" />
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email') && !registerForm.get('email')?.hasError('required')">
+          Enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="new-password" />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword" [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('minlength') && !registerForm.get('password')?.hasError('required')">
+          Password must be at least 8 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Confirm password</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" autocomplete="new-password" />
+        <button mat-icon-button matSuffix type="button" (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="hideConfirmPassword ? 'Show password' : 'Hide password'">
+          <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+          Please confirm your password
+        </mat-error>
+        <mat-error *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched && !registerForm.get('confirmPassword')?.hasError('required')">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Inline error banner per D-09 -->
+      <div class="auth-error-banner" *ngIf="serverError" role="alert" aria-live="assertive">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ serverError }}</span>
+      </div>
+
+      <button mat-flat-button type="submit" class="auth-submit-btn"
+              [disabled]="isLoading" [attr.aria-busy]="isLoading">
+        <app-spinner *ngIf="isLoading" [diameter]="20"></app-spinner>
+        <span *ngIf="!isLoading">Create Account</span>
+      </button>
+
+    </form>
+
+    <a routerLink="/auth/login" class="auth-secondary-link">
+      Already have an account? Sign In &rarr;
+    </a>
+  </div>
+</div>

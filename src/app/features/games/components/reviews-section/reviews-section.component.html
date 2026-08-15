@@ -1,0 +1,60 @@
+<section class="reviews-section">
+  <div class="reviews-section__divider"></div>
+  <h2 class="reviews-section__heading">Reviews</h2>
+
+  <!-- Loading skeleton -->
+  <ng-container *ngIf="loading">
+    <app-skeleton width="100%" height="80px" borderRadius="8px"></app-skeleton>
+    <app-skeleton width="100%" height="80px" borderRadius="8px"></app-skeleton>
+    <app-skeleton width="100%" height="80px" borderRadius="8px"></app-skeleton>
+  </ng-container>
+
+  <ng-container *ngIf="!loading">
+    <!-- Average rating summary — shown only when reviews exist -->
+    <div *ngIf="reviews.length > 0" class="reviews-section__summary">
+      <span class="reviews-section__avg-score">{{ averageRating | number:'1.1-1' }}</span>
+      <app-star-rating [rating]="averageRating" [interactive]="false"></app-star-rating>
+      <span class="reviews-section__count">
+        ({{ reviews.length }} {{ reviews.length === 1 ? 'review' : 'reviews' }})
+      </span>
+    </div>
+
+    <!-- Review form gating logic -->
+    <ng-container *ngIf="isAuthenticated; else loginPrompt">
+      <!-- Purchase check pending — show skeleton in form slot -->
+      <ng-container *ngIf="orderCheckPending">
+        <app-skeleton width="100%" height="80px" borderRadius="8px"></app-skeleton>
+      </ng-container>
+      <!-- Has purchased — show review form -->
+      <ng-container *ngIf="!orderCheckPending && hasPurchased">
+        <app-review-form
+          [gameId]="gameId"
+          (reviewCreated)="onReviewCreated($event)">
+        </app-review-form>
+      </ng-container>
+      <!-- Not purchased — show nothing (silently omit form per D-02 discretion) -->
+    </ng-container>
+    <ng-template #loginPrompt>
+      <p class="reviews-section__login-prompt">
+        <a routerLink="/auth/login" class="reviews-section__login-link">Log in</a> to write a review.
+      </p>
+    </ng-template>
+
+    <!-- Review list -->
+    <div class="reviews-section__list" *ngIf="reviews.length > 0">
+      <app-review-card
+        *ngFor="let review of reviews"
+        [review]="review"
+        [currentUserId]="currentUserId"
+        (editClicked)="openEditDialog($event)"
+        (deleteClicked)="openDeleteDialog($event)">
+      </app-review-card>
+    </div>
+
+    <!-- Empty state -->
+    <app-empty-state
+      *ngIf="reviews.length === 0"
+      message="No reviews yet. Be the first to review this game.">
+    </app-empty-state>
+  </ng-container>
+</section>

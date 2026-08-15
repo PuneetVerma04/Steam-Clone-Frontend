@@ -1,0 +1,66 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.review-card {
+  background: $color-surface; // #4b3d37
+  border-radius: $border-radius-md; // 8px
+  padding: $spacing-md; // 16px
+  box-shadow: $shadow-sm;
+}
+
+.review-card__top-row {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm; // 8px
+}
+
+.review-card__username {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-secondary; // #cccccc
+  flex-shrink: 0;
+}
+
+.review-card__date {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-muted; // #999999
+  margin-left: auto;
+}
+
+.review-card__actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs; // 4px
+}
+
+.review-card__edit-btn {
+  color: $color-text-secondary;
+}
+
+.review-card__delete-btn {
+  color: $color-error; // #f44336
+}
+
+.review-card__comment {
+  margin-top: $spacing-sm; // 8px
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-primary; // #ffffff
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .review-card__top-row {
+    flex-wrap: wrap;
+  }
+  .review-card__username {
+    width: 100%;
+    order: 1;
+  }
+  .review-card__date {
+    order: 2;
+    margin-left: 0;
+    width: 100%;
+  }
+}

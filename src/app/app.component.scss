@@ -1,0 +1,8 @@
+@use 'assets/styles/variables' as vars;
+
+// Offset content below the fixed navbar (navbar height = 64px)
+.app-content {
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  background-color: vars.$color-background;
+}

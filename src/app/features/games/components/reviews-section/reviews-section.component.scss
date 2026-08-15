@@ -1,0 +1,60 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.reviews-section {
+  margin-top: $spacing-xxl; // 48px separation from game-detail__body
+}
+
+.reviews-section__divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: $spacing-md; // 16px
+}
+
+.reviews-section__heading {
+  font-family: $font-heading;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md;
+}
+
+.reviews-section__summary {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm; // 8px
+  margin-bottom: $spacing-xl; // 32px
+}
+
+.reviews-section__avg-score {
+  font-family: $font-heading;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  line-height: 1.0;
+}
+
+.reviews-section__count {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-muted; // #999999
+}
+
+.reviews-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm; // 8px between cards
+  margin-top: $spacing-md;
+}
+
+.reviews-section__login-prompt {
+  font-size: 0.875rem;
+  font-family: $font-body;
+  color: $color-text-muted;
+  margin: $spacing-md 0;
+}
+
+.reviews-section__login-link {
+  color: $color-primary;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}

@@ -1,0 +1,70 @@
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+
+  <!-- Logo (left zone) -->
+  <div class="navbar__logo">
+    <a routerLink="/games" class="navbar__logo-link">
+      <img src="assets/images/logo.svg" alt="Gray Zone" class="navbar__logo-img"
+           onerror="this.src='assets/images/logo.png'" />
+    </a>
+  </div>
+
+  <!-- Nav links (center zone) — hidden on mobile, shown via hamburger -->
+  <ul class="navbar__links" [class.navbar__links--open]="isMobileMenuOpen" role="list">
+    <li>
+      <a routerLink="/games" routerLinkActive="navbar__link--active"
+         class="navbar__link" (click)="closeMobileMenu()">Games</a>
+    </li>
+    <li *ngIf="currentUser$ | async">
+      <a routerLink="/orders" routerLinkActive="navbar__link--active"
+         class="navbar__link" (click)="closeMobileMenu()">Orders</a>
+    </li>
+  </ul>
+
+  <!-- Auth controls (right zone) — per D-01, D-03, D-04 -->
+  <div class="navbar__auth">
+
+    <!-- Cart icon with mat-badge — always visible including mobile -->
+    <a routerLink="/cart" class="navbar__cart" aria-label="Shopping cart">
+      <mat-icon
+        [matBadge]="cartCount$ | async"
+        [matBadgeHidden]="(cartCount$ | async) === 0"
+        matBadgeColor="warn"
+        aria-hidden="false"
+      >shopping_cart</mat-icon>
+    </a>
+
+    <!-- Logged IN state: username + chevron dropdown -->
+    <ng-container *ngIf="currentUser$ | async as user">
+      <button mat-button [matMenuTriggerFor]="userMenu" class="navbar__user-btn">
+        <span class="navbar__username">{{ user.username }}</span>
+        <mat-icon class="navbar__chevron">expand_more</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <a mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          Profile
+        </a>
+        <button mat-menu-item (click)="onLogout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+    </ng-container>
+
+    <!-- Logged OUT state: Login + Register links -->
+    <ng-container *ngIf="!(currentUser$ | async)">
+      <a routerLink="/auth/login" mat-button class="navbar__auth-link">Login</a>
+      <a routerLink="/auth/register" mat-raised-button color="primary"
+         class="navbar__auth-cta">Register</a>
+    </ng-container>
+
+    <!-- Hamburger button (mobile only, per D-05) -->
+    <button class="navbar__hamburger" (click)="toggleMobileMenu()"
+            [attr.aria-expanded]="isMobileMenuOpen"
+            aria-label="Toggle navigation menu"
+            mat-icon-button>
+      <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+
+  </div>
+</nav>

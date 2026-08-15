@@ -1,0 +1,46 @@
+<div class="checkout-page">
+  <!-- Back link -->
+  <a routerLink="/cart" class="checkout-page__back-link">&#8592; Back to Cart</a>
+
+  <!-- Page heading -->
+  <h1 class="checkout-page__heading">Checkout</h1>
+
+  <ng-container *ngIf="cartItems$ | async as cartItems">
+    <!-- Cart summary (read-only) -->
+    <div class="checkout-page__summary">
+      <!-- Column headers -->
+      <div class="checkout-page__summary-header">
+        <span class="checkout-page__item-title">Item</span>
+        <span class="checkout-page__item-qty">Qty</span>
+        <span class="checkout-page__item-total">Subtotal</span>
+      </div>
+      <div class="checkout-page__summary-row"
+           *ngFor="let item of cartItems; last as isLast"
+           [class.checkout-page__summary-row--last]="isLast">
+        <span class="checkout-page__item-title">{{ item.title }}</span>
+        <span class="checkout-page__item-qty">&#215; {{ item.quantity }}</span>
+        <span class="checkout-page__item-total">
+          {{ (item.price * item.quantity) | currency:'USD':'symbol':'1.2-2' }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Running total -->
+    <div class="checkout-page__total">
+      <span class="checkout-page__total-label">Total:</span>
+      <span class="checkout-page__total-value">{{ runningTotal | currency:'USD':'symbol':'1.2-2' }}</span>
+    </div>
+
+    <!-- Place Order CTA -->
+    <div class="checkout-page__cta">
+      <button mat-flat-button
+              class="checkout-page__place-order-btn"
+              [disabled]="isSubmitting"
+              [attr.aria-busy]="isSubmitting"
+              (click)="placeOrder()">
+        <span *ngIf="!isSubmitting">Place Order</span>
+        <app-spinner *ngIf="isSubmitting" [diameter]="20"></app-spinner>
+      </button>
+    </div>
+  </ng-container>
+</div>

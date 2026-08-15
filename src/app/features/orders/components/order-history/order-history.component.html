@@ -1,0 +1,78 @@
+<div class="order-history">
+  <!-- Page heading -->
+  <h1 class="order-history__heading">Order History</h1>
+
+  <!-- Skeleton while loading -->
+  <ng-container *ngIf="loading">
+    <app-skeleton width="100%" height="56px" borderRadius="8px"></app-skeleton>
+    <app-skeleton width="100%" height="56px" borderRadius="8px"></app-skeleton>
+    <app-skeleton width="100%" height="56px" borderRadius="8px"></app-skeleton>
+    <app-skeleton width="100%" height="56px" borderRadius="8px"></app-skeleton>
+  </ng-container>
+
+  <!-- Error state -->
+  <app-empty-state
+    *ngIf="!loading && hasError"
+    message="Couldn't load your orders. Please try again."
+    ctaLabel="Browse Games"
+    ctaLink="/games">
+  </app-empty-state>
+
+  <!-- Empty state -->
+  <app-empty-state
+    *ngIf="!loading && !hasError && orders.length === 0"
+    message="No orders yet."
+    ctaLabel="Browse Games"
+    ctaLink="/games">
+  </app-empty-state>
+
+  <!-- Orders list -->
+  <div *ngIf="!loading && !hasError && orders.length > 0"
+       class="order-history__list"
+       role="table"
+       aria-label="Order history">
+
+    <!-- Column headers -->
+    <div class="order-history__header" role="row">
+      <span class="order-history__col order-history__col--id">Order #</span>
+      <span class="order-history__col order-history__col--date">Date</span>
+      <span class="order-history__col order-history__col--status">Status</span>
+      <span class="order-history__col order-history__col--total">Total</span>
+      <span class="order-history__col order-history__col--arrow"></span>
+    </div>
+
+    <div class="order-history__row"
+         *ngFor="let order of orders"
+         role="row"
+         tabindex="0"
+         (click)="navigateToDetail(order.orderId)"
+         (keyup.enter)="navigateToDetail(order.orderId)"
+         (keyup.space)="navigateToDetail(order.orderId)">
+
+      <!-- Order ID -->
+      <span class="order-history__col order-history__col--id">
+        #{{ order.orderId }}
+      </span>
+
+      <!-- Date -->
+      <span class="order-history__col order-history__col--date">
+        {{ order.orderDate | date:'MMM d, yyyy' }}
+      </span>
+
+      <!-- Status badge -->
+      <span class="order-history__col order-history__col--status">
+        <app-order-status-badge [status]="order.status"></app-order-status-badge>
+      </span>
+
+      <!-- Total -->
+      <span class="order-history__col order-history__col--total">
+        {{ order.totalPrice | currency:'USD':'symbol':'1.2-2' }}
+      </span>
+
+      <!-- Arrow -->
+      <span class="order-history__col order-history__col--arrow">
+        <mat-icon>chevron_right</mat-icon>
+      </span>
+    </div>
+  </div>
+</div>

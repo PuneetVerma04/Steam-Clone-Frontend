@@ -1,0 +1,135 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.checkout-page {
+  padding: $spacing-xxxl $spacing-lg $spacing-xl;
+  max-width: 720px;
+  margin: 0 auto;
+
+  &__back-link {
+    display: inline-block;
+    color: $color-primary;
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin-bottom: $spacing-md;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-bottom: $spacing-xl;
+    line-height: 1.2;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__summary-header {
+    display: flex;
+    align-items: center;
+    padding: $spacing-sm 0 $spacing-sm;
+    border-bottom: 1px solid $color-surface-light;
+    margin-bottom: $spacing-xs;
+
+    .checkout-page__item-title,
+    .checkout-page__item-qty,
+    .checkout-page__item-total {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &__summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $color-surface-light;
+
+    &--last {
+      border-bottom: none;
+    }
+  }
+
+  &__item-title {
+    flex: 1;
+    color: $color-text-primary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__item-qty {
+    flex: 0 0 auto;
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+    margin: 0 $spacing-md;
+  }
+
+  &__item-total {
+    flex: 0 0 auto;
+    color: $color-primary;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: $font-body;
+    text-align: right;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: $spacing-sm;
+    margin-top: $spacing-xl;
+  }
+
+  &__total-label {
+    color: $color-text-secondary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__total-value {
+    color: $color-primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: $font-body;
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacing-lg;
+  }
+
+  &__place-order-btn {
+    background-color: $color-primary;
+    color: $color-text-primary;
+    font-weight: 700;
+    min-height: 48px;
+    width: 280px;
+
+    &[disabled] {
+      opacity: 0.8;
+      pointer-events: none;
+      background-color: $color-primary;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+    }
+  }
+}

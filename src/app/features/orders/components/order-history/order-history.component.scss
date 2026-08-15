@@ -1,0 +1,95 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.order-history {
+  padding: $spacing-xxxl $spacing-lg $spacing-xl;
+  max-width: 960px;
+  margin: 0 auto;
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-bottom: $spacing-xl;
+    line-height: 1.2;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $color-surface-light;
+    margin-bottom: $spacing-xs;
+
+    .order-history__col {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-md;
+    background: $color-surface;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+    outline: none;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-surface-light;
+    }
+  }
+
+  &__col {
+    font-size: 0.875rem;
+    font-family: $font-body;
+    font-weight: 400;
+
+    &--id {
+      flex: 0 0 120px;
+      color: $color-text-secondary;
+    }
+
+    &--date {
+      flex: 1;
+      color: $color-text-muted;
+
+      @media (max-width: $breakpoint-mobile) {
+        display: none; // date column hidden on mobile per UI-SPEC
+      }
+    }
+
+    &--status {
+      flex: 0 0 100px;
+    }
+
+    &--total {
+      flex: 0 0 80px;
+      color: $color-primary;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    &--arrow {
+      flex: 0 0 24px;
+      color: $color-text-muted;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

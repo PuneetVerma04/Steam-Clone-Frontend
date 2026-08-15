@@ -1,110 +1,59 @@
-# Gray Zone Frontend (Blazor Server)
+# GrayZoneFrontend
 
-A modern Steam-like storefront built with **Blazor Server** and **MudBlazor**. This project demonstrates a dynamic catalog, interactive cart, and checkout workflow, fully integrated with a RESTful backend.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
 
----
+## Development server
 
-## Table of Contents
+To start a local development server, run:
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Core Functionalities](#core-functionalities)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Documentation](#documentation)
-- [Future Enhancements](#future-enhancements)
-- [License](#license)
-
----
-
-## Features
-
-- Dynamic product catalog (Razor components)
-- Interactive cart: add/remove/update items, total calculation
-- Checkout form with client-side validation
-- Asynchronous backend integration via `HttpClient`
-- Reusable components: `ProductCard`, `CartItem`, `Loader`
-- Responsive UI with MudBlazor grids
-- Snackbars, alerts, dialogs for user feedback
-
----
-
-## Tech Stack
-
-- **Framework:** Blazor Server (.NET 9)
-- **UI Library:** MudBlazor
-- **Styling:** MudBlazor (Bootstrap optional)
-- **Backend Communication:** HttpClient (REST API)
-- **Validation:** DataAnnotations, MudBlazor MudForm
-- **Async:** Async/Await for all backend calls
-
----
-
-## Project Structure
-
-```
-SteamClone.Frontend/
-├── Components/
-│   ├── Layout/
-│   │   ├── MainLayout.razor
-│   │   ├── MainLayout.razor.css
-│   │   └── NavMenu.razor
-│   ├── Pages/
-│   │   ├── Catalog.razor
-│   │   ├── Cart.razor
-│   │   ├── Checkout.razor
-│   │   └── Login.razor
-│   └── App.razor
-├── Models/
-│   ├── GameResponseDTO.cs
-│   ├── CartItemDto.cs
-│   └── CheckoutModel.cs
-├── Services/
-│   ├── CatalogService.cs
-│   ├── CartService.cs
-│   └── OrderService.cs
-├── wwwroot/
-│   └── app.css
-├── Program.cs
-├── SteamClone.Frontend.csproj
-
+```bash
+ng serve
 ```
 
----
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Core Functionalities
+## Code scaffolding
 
-### Catalog
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-- Fetches product list from backend
-- Displays products with `MudCard` and `MudGrid`
-- Add to cart functionality
+```bash
+ng generate component component-name
+```
 
-### Cart
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-- Dynamic cart item display
-- Update quantity/remove items
-- Subtotal/total calculation
-- Feedback via MudBlazor snackbar/alert
+```bash
+ng generate --help
+```
 
-### Checkout
+## Building
 
-- Validated form: name, email, address, payment (dummy)
-- Async submission to backend
-- Confirmation dialogs
+To build the project run:
 
-### Backend Integration
+```bash
+ng build
+```
 
-- `CatalogService`: GET products
-- `CartService`: Add/remove/fetch cart items
-- `OrderService`: POST checkout data
-- All calls are async with error handling
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-### UI & Interaction
+## Running unit tests
 
-- Responsive layout
-- Dynamic cart count in navigation
-- MudBlazor snackbars/alerts for feedback
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
----
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,0 +1,31 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.review-edit-dialog__title {
+  font-family: $font-heading;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-text-primary;
+}
+
+.review-edit-dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  min-width: 320px;
+}
+
+.review-edit-dialog__star-row {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.review-edit-dialog__comment-field {
+  width: 100%;
+}
+
+.review-edit-dialog__save-btn {
+  background-color: $color-primary;
+  color: #fff;
+}

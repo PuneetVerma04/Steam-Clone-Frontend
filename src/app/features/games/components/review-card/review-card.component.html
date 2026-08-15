@@ -1,0 +1,24 @@
+<article class="review-card" role="article">
+  <div class="review-card__top-row">
+    <span class="review-card__username">{{ review.username }}</span>
+    <app-star-rating [rating]="review.rating" [interactive]="false"></app-star-rating>
+    <span class="review-card__date">{{ review.reviewDate | date:'MMM d, yyyy' }}</span>
+    <div *ngIf="isOwnReview" class="review-card__actions">
+      <button
+        mat-icon-button
+        class="review-card__edit-btn"
+        aria-label="Edit review"
+        (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="review-card__delete-btn"
+        aria-label="Delete review"
+        (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <p *ngIf="review.comment" class="review-card__comment">{{ review.comment }}</p>
+</article>

@@ -1,0 +1,58 @@
+<div class="catalog">
+
+  <!-- Hero carousel -->
+  <app-catalog-hero
+    *ngIf="showCarousel"
+    [games]="featuredGames"
+  ></app-catalog-hero>
+
+  <!-- Sticky filter bar -->
+  <div class="catalog__filters">
+    <app-game-filters (filterChange)="onFilterChange($event)"></app-game-filters>
+  </div>
+
+  <!-- Game grid -->
+  <div class="catalog__content">
+
+    <ng-container *ngIf="!loading; else skeletonTpl">
+
+      <!-- Empty state -->
+      <app-empty-state
+        *ngIf="games.length === 0"
+        message="No games found for your search. Try different keywords or clear the filters."
+        ctaLabel="Clear Filters"
+        ctaLink="/games"
+      ></app-empty-state>
+
+      <!-- Grid -->
+      <div class="catalog__grid" *ngIf="games.length > 0">
+        <app-game-card
+          *ngFor="let game of games"
+          [game]="game"
+          (addToCart)="addToCart($event)"
+        ></app-game-card>
+      </div>
+
+    </ng-container>
+
+    <!-- Skeleton -->
+    <ng-template #skeletonTpl>
+      <div class="catalog__grid" aria-hidden="true">
+        <app-game-card *ngFor="let i of [1,2,3,4,5,6,7,8]"></app-game-card>
+      </div>
+    </ng-template>
+
+    <!-- Paginator -->
+    <mat-paginator
+      *ngIf="!loading && games.length > 0"
+      [length]="totalCount"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [hidePageSize]="true"
+      (page)="onPageChange($event)"
+      class="catalog__paginator"
+    ></mat-paginator>
+
+  </div>
+
+</div>

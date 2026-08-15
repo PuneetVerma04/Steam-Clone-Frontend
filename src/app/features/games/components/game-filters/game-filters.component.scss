@@ -1,0 +1,72 @@
+@use 'assets/styles/variables' as *;
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  background: $color-background;
+
+  &__search {
+    width: 240px;
+  }
+
+  &__genre {
+    width: 160px;
+  }
+
+  &__price-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__price-row {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__price {
+    width: 100px;
+  }
+
+  &__sort {
+    width: 160px;
+  }
+
+  &__price-error {
+    width: 100%;
+    font-size: 0.875rem;
+    color: $color-error;
+    margin-top: -$spacing-sm;
+  }
+
+  &__price-error {
+    font-size: 0.875rem;
+    color: $color-error;
+  }
+
+  &__clear {
+    color: $color-text-secondary;
+    border-color: $color-text-secondary;
+    min-height: 44px;
+    align-self: center;
+    margin-left: auto;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+
+    &__search,
+    &__genre,
+    &__price,
+    &__sort {
+      width: 100%;
+    }
+
+    &__clear {
+      width: 100%;
+    }
+  }
+}

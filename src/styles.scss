@@ -1,0 +1,86 @@
+// Angular Material M3 dark theme with earth-tone palette overrides
+@use '@angular/material' as mat;
+@use 'assets/styles/theme-colors' as theme;
+@use 'assets/styles/variables' as vars;
+@use 'assets/styles/mixins' as *;
+@use 'assets/styles/typography' as *;
+
+html {
+  @include mat.theme((
+    color: (
+      primary: theme.$primary-palette,
+      theme-type: dark,
+    ),
+    typography: (
+      plain-family: 'Inter',
+      brand-family: 'Rajdhani',
+    ),
+    density: 0,
+  ));
+
+  // Override Material system variables for earth-tone palette
+  --mat-sys-background: #332f2e;
+  --mat-sys-surface: #4b3d37;
+  --mat-sys-surface-container: #4b3d37;
+  --mat-sys-surface-container-high: #755243;
+  --mat-sys-surface-container-highest: #755243;
+}
+
+// Global resets
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: vars.$color-background;
+  color: vars.$color-text-primary;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: vars.$color-primary;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+// View Transitions API — route fade-in animation (MUST be in global styles, not component styles)
+// Source: angular.dev/guide/routing/route-transition-animations
+@keyframes gz-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+::view-transition-new(*) {
+  animation: gz-fade-in 0.3s ease-out;
+}
+
+::view-transition-old(*) {
+  animation: none;
+}
+
+// Utility: visually hidden (accessibility)
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ngx-progressbar custom color (v14+ uses CSS custom properties)
+ng-progress {
+  --ng-progress-color: #F55410;
+  --ng-progress-height: 3px;
+}

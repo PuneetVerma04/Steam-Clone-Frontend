@@ -1,0 +1,103 @@
+<div class="game-detail">
+
+  <!-- Skeleton loading state -->
+  <ng-template #skeletonTpl>
+    <div class="game-detail__skeleton" aria-hidden="true">
+      <!-- Hero skeleton -->
+      <app-skeleton width="100%" height="520px" borderRadius="0"></app-skeleton>
+      <!-- Body skeletons -->
+      <div class="game-detail__skeleton-body">
+        <app-skeleton width="60%" height="32px" borderRadius="4px"></app-skeleton>
+        <app-skeleton width="20%" height="24px" borderRadius="4px"></app-skeleton>
+        <app-skeleton width="100%" height="14px" borderRadius="4px"></app-skeleton>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- 404 / not-found state -->
+  <ng-template #notFoundTpl>
+    <div class="game-detail__not-found" role="status">
+      <p class="game-detail__not-found-msg">This game doesn't exist or has been removed.</p>
+      <a routerLink="/games" mat-flat-button class="game-detail__browse-btn">Browse Catalog</a>
+    </div>
+  </ng-template>
+
+  <!-- Main content — shown once loading completes -->
+  <ng-container *ngIf="!loading; else skeletonTpl">
+
+    <!-- If load finished but game is null, show not-found -->
+    <ng-container *ngIf="game; else notFoundTpl">
+
+      <!-- ===== HERO SECTION ===== -->
+      <section class="game-detail__hero" aria-label="Game cover art">
+        <!-- Full-bleed cover image -->
+        <img
+          [src]="game.imageUrl"
+          [alt]="game.title + ' cover art'"
+          class="game-detail__hero-img"
+          (error)="onImageError($event)"
+        />
+
+        <!-- Directional gradient overlay (135deg per UI-SPEC 5.5) -->
+        <div class="game-detail__hero-gradient" aria-hidden="true"></div>
+
+        <!-- Content overlay — genre, title, price at bottom-left -->
+        <div class="game-detail__hero-content">
+          <!-- Genre pill -->
+          <span class="game-detail__genre-pill">{{ game.genre }}</span>
+
+          <!-- Game title — 2rem / 700 / Rajdhani -->
+          <h1 class="game-detail__title">{{ game.title }}</h1>
+
+          <!-- Price — 1.5rem / 700 / $color-primary -->
+          <span class="game-detail__price">${{ game.price | number:'1.2-2' }}</span>
+        </div>
+      </section>
+
+      <!-- ===== DETAIL BODY ===== -->
+      <div class="game-detail__body">
+
+        <!-- Back to Catalog ghost button -->
+        <a routerLink="/games" mat-button class="game-detail__back-btn">
+          &larr; Back to Catalog
+        </a>
+
+        <!-- Description — {{ }} interpolation only, never [innerHTML] (T-3-03) -->
+        <p class="game-detail__description">{{ game.description }}</p>
+
+        <!-- Publisher info -->
+        <p class="game-detail__meta">
+          Published by {{ game.publisherName }}
+        </p>
+
+        <!-- Add to Cart / In Cart button -->
+        <button
+          mat-flat-button
+          class="game-detail__add-btn"
+          [class.game-detail__add-btn--in-cart]="isInCart()"
+          [disabled]="isInCart() || addingToCart"
+          [attr.aria-label]="'Add ' + game.title + ' to cart'"
+          (click)="addToCart()"
+        >
+          <ng-container *ngIf="addingToCart">
+            <app-spinner [diameter]="20"></app-spinner>
+          </ng-container>
+          <ng-container *ngIf="!addingToCart">
+            {{ isInCart() ? 'In Cart' : 'Add to Cart' }}
+          </ng-container>
+        </button>
+
+      </div>
+
+      <!-- ===== REVIEWS SECTION ===== -->
+      <!-- Per D-01: appears below .game-detail__body. Same scroll, no tab/accordion. -->
+      <div class="game-detail__reviews">
+        <app-reviews-section
+          [gameId]="game.id">
+        </app-reviews-section>
+      </div>
+
+    </ng-container>
+  </ng-container>
+
+</div>

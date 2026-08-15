@@ -1,0 +1,11 @@
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+
+  // Override Material spinner color to use brand primary (#F55410)
+  ::ng-deep .mat-mdc-progress-spinner circle {
+    stroke: #f55410;
+  }
+}

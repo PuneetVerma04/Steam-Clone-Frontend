@@ -1,0 +1,18 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.status-badge {
+  display: inline-block;
+  border-radius: $border-radius-lg; // 12px
+  padding: 2px 8px; // 2px vertical is a deliberate sub-grid exception per UI-SPEC
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: $font-body;
+  white-space: nowrap;
+
+  &--completed  { background: $color-success; color: #1a1a1a; }
+  &--pending    { background: $color-warning; color: #1a1a1a; }
+  &--failed     { background: $color-error;   color: #ffffff; }
+  &--cancelled  { background: $color-error;   color: #ffffff; }
+  &--refunded   { background: $color-info;    color: #ffffff; }
+}

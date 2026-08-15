@@ -1,0 +1,205 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+// ===== GAME DETAIL PAGE =====
+
+.game-detail {
+  min-height: 100vh;
+  background: $color-background;
+
+  // ===== SKELETON =====
+
+  &__skeleton {
+    &-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: $spacing-xxxl $spacing-lg;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+
+  // ===== NOT FOUND =====
+
+  &__not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xxxl $spacing-lg;
+    gap: $spacing-lg;
+    text-align: center;
+  }
+
+  &__not-found-msg {
+    font-size: 1.125rem;
+    color: $color-text-secondary;
+    margin: 0;
+  }
+
+  &__browse-btn {
+    background: transparent;
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+    min-height: 44px;
+    border-radius: $border-radius-md;
+  }
+
+  // ===== HERO SECTION =====
+
+  &__hero {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+
+    // Tablet: 641–1024px
+    @media (min-width: 641px) and (max-width: #{$breakpoint-desktop}) {
+      height: 420px;
+    }
+
+    // Mobile: ≤640px
+    @media (max-width: #{$breakpoint-mobile}) {
+      height: 320px;
+    }
+  }
+
+  &__hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Directional gradient overlay — 135deg per UI-SPEC 5.5
+  &__hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(51, 47, 46, 0.9) 0%,
+      rgba(75, 61, 55, 0.5) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  // Content overlay — genre pill, title, price at bottom-left
+  &__hero-content {
+    position: absolute;
+    bottom: $spacing-xxl;
+    left: $spacing-xxxl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    @media (max-width: #{$breakpoint-mobile}) {
+      left: $spacing-lg;
+      bottom: $spacing-lg;
+    }
+  }
+
+  &__genre-pill {
+    display: inline-block;
+    background: $color-primary;
+    color: $color-text-primary;
+    border-radius: $border-radius-sm;
+    padding: $spacing-xs $spacing-sm;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+  }
+
+  // Game title — 2rem / 700 / Rajdhani
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-text-primary;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  // Price — 1.5rem / 700 / $color-primary
+  &__price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-primary;
+    line-height: 1.2;
+  }
+
+  // ===== DETAIL BODY =====
+
+  &__body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: $spacing-xxxl $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+
+    @media (max-width: #{$breakpoint-mobile}) {
+      padding: $spacing-md;
+    }
+  }
+
+  // Back to Catalog ghost button — top-left of detail body
+  &__back-btn {
+    align-self: flex-start;
+    color: $color-secondary;
+    border: none;
+    padding: 0;
+    font-size: 0.875rem;
+    min-height: 36px;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+
+  // Description — 0.875rem / 400 / $color-text-secondary / line-height 1.6
+  &__description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $color-text-secondary;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__meta {
+    font-size: 0.875rem;
+    color: $color-text-muted;
+    margin: 0;
+  }
+
+  // Add to Cart button — full treatment per UI-SPEC 5.5
+  &__add-btn {
+    background: $color-primary !important;
+    color: $color-text-primary !important;
+    font-weight: 700;
+    min-height: 48px;
+    width: 220px;
+    border-radius: $border-radius-md;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+
+    @media (max-width: #{$breakpoint-mobile}) {
+      width: 100%;
+    }
+
+    // In Cart — disabled styling per UI-SPEC 5.5
+    &--in-cart {
+      background: $color-surface-light !important;
+      color: $color-text-muted !important;
+      cursor: default;
+    }
+  }
+}

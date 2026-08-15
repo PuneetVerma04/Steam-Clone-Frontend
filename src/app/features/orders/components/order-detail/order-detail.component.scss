@@ -1,0 +1,137 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.order-detail {
+  padding: $spacing-xxxl $spacing-lg $spacing-xl;
+  max-width: 960px;
+  margin: 0 auto;
+
+  &__back-link {
+    display: inline-block;
+    color: $color-primary;
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin-bottom: $spacing-md;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-bottom: $spacing-md;
+    line-height: 1.2;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__date {
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__items-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $color-surface-light;
+    margin-bottom: $spacing-xs;
+
+    .order-detail__item-title,
+    .order-detail__item-qty,
+    .order-detail__item-unit,
+    .order-detail__item-subtotal {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &__item-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid rgba($color-surface-light, 0.4);
+  }
+
+  &__item-title {
+    flex: 1;
+    color: $color-text-primary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__item-qty {
+    flex: 0 0 48px;
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__item-unit {
+    flex: 0 0 64px;
+    color: $color-text-secondary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: none; // unit price hidden on mobile, subtotal shown only
+    }
+  }
+
+  &__item-subtotal {
+    flex: 0 0 72px;
+    color: $color-primary;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: $font-body;
+    text-align: right;
+  }
+
+  &__divider {
+    border-top: 1px solid $color-surface-light;
+    margin: $spacing-lg 0;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: $spacing-sm;
+  }
+
+  &__total-label {
+    color: $color-text-secondary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__total-value {
+    color: $color-primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: $font-body;
+  }
+}

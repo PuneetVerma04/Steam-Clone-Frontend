@@ -1,0 +1,28 @@
+<h2 mat-dialog-title class="review-edit-dialog__title">Edit Review</h2>
+<mat-dialog-content class="review-edit-dialog__content">
+  <div [formGroup]="editForm">
+    <div class="review-edit-dialog__star-row">
+      <app-star-rating
+        [rating]="editForm.get('rating')?.value ?? 0"
+        [interactive]="true"
+        (ratingChange)="onRatingChange($event)">
+      </app-star-rating>
+      <mat-error *ngIf="editForm.get('rating')?.errors?.['min'] && editForm.get('rating')?.touched">
+        Please select a rating.
+      </mat-error>
+    </div>
+    <mat-form-field appearance="outline" class="review-edit-dialog__comment-field">
+      <mat-label>Comment (optional)</mat-label>
+      <textarea
+        matInput
+        formControlName="comment"
+        rows="4"
+        maxlength="1000">
+      </textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="review-edit-dialog__actions">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-flat-button class="review-edit-dialog__save-btn" (click)="save()">Save Review</button>
+</mat-dialog-actions>

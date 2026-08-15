@@ -1,0 +1,12 @@
+<!-- Top progress bar for lazy-loaded route navigation (NProgress style, per D-06) -->
+<!-- NgProgressRouter in AppModule auto-hooks this to Router navigation events -->
+<ng-progress></ng-progress>
+
+<!-- Fixed navbar at top of every page (per D-01 through D-05) -->
+<app-navbar></app-navbar>
+
+<!-- Main content area — offset by navbar height (64px) -->
+<main class="app-content" role="main">
+  <!-- Router outlet: view-transition fade-in defined in styles.scss via ::view-transition-new(*) -->
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,58 @@
+<div class="order-confirmation">
+  <!-- Skeleton while loading -->
+  <ng-container *ngIf="loading">
+    <app-skeleton width="200px" height="24px" borderRadius="4px"></app-skeleton>
+    <app-skeleton width="100%" height="16px" borderRadius="4px"></app-skeleton>
+    <app-skeleton width="100%" height="16px" borderRadius="4px"></app-skeleton>
+  </ng-container>
+
+  <!-- Not found state -->
+  <app-empty-state
+    *ngIf="!loading && notFound"
+    message="Order not found."
+    ctaLabel="View Orders"
+    ctaLink="/orders">
+  </app-empty-state>
+
+  <!-- Confirmation content -->
+  <ng-container *ngIf="!loading && !notFound && order">
+    <!-- Confirmation heading -->
+    <h1 class="order-confirmation__heading">Order Confirmed ✓</h1>
+
+    <!-- Order ID -->
+    <p class="order-confirmation__order-id">Order #{{ order.orderId }}</p>
+
+    <!-- Date -->
+    <p class="order-confirmation__date">
+      Placed on {{ order.orderDate | date:'MMM d, yyyy' }}
+    </p>
+
+    <!-- Items list (read-only, same pattern as order-detail) -->
+    <div class="order-confirmation__items">
+      <div class="order-confirmation__item-row" *ngFor="let item of order.items">
+        <span class="order-confirmation__item-title">{{ item.gameTitle || item.title || 'Unknown Game' }}</span>
+        <span class="order-confirmation__item-qty">&#215; {{ item.quantity }}</span>
+        <span class="order-confirmation__item-subtotal">
+          {{ (item.price * item.quantity) | currency:'USD':'symbol':'1.2-2' }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Total paid -->
+    <div class="order-confirmation__total">
+      <span class="order-confirmation__total-label">Total Paid:</span>
+      <span class="order-confirmation__total-value">
+        {{ order.totalPrice | currency:'USD':'symbol':'1.2-2' }}
+      </span>
+    </div>
+
+    <!-- Continue Shopping CTA -->
+    <div class="order-confirmation__cta">
+      <button mat-stroked-button
+              class="order-confirmation__continue-btn"
+              routerLink="/games">
+        Continue Shopping
+      </button>
+    </div>
+  </ng-container>
+</div>

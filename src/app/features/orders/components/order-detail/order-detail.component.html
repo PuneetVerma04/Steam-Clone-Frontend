@@ -1,0 +1,62 @@
+<div class="order-detail">
+  <!-- Skeleton while loading -->
+  <ng-container *ngIf="loading">
+    <app-skeleton width="240px" height="24px" borderRadius="4px"></app-skeleton>
+    <app-skeleton width="100%" height="16px" borderRadius="4px"></app-skeleton>
+    <app-skeleton width="100%" height="16px" borderRadius="4px"></app-skeleton>
+    <app-skeleton width="100%" height="16px" borderRadius="4px"></app-skeleton>
+  </ng-container>
+
+  <!-- Not found state -->
+  <app-empty-state
+    *ngIf="!loading && notFound"
+    message="Order not found."
+    ctaLabel="View Orders"
+    ctaLink="/orders">
+  </app-empty-state>
+
+  <!-- Order detail content -->
+  <ng-container *ngIf="!loading && !notFound && order">
+    <!-- Back link -->
+    <a routerLink="/orders" class="order-detail__back-link">&#8592; Back to Orders</a>
+
+    <!-- Heading -->
+    <h1 class="order-detail__heading">Order #{{ order.orderId }}</h1>
+
+    <!-- Meta row: date + status -->
+    <div class="order-detail__meta">
+      <span class="order-detail__date">{{ order.orderDate | date:'MMM d, yyyy' }}</span>
+      <app-order-status-badge [status]="order.status"></app-order-status-badge>
+    </div>
+
+    <!-- Line items -->
+    <div class="order-detail__items">
+      <!-- Column headers -->
+      <div class="order-detail__items-header">
+        <span class="order-detail__item-title">Game</span>
+        <span class="order-detail__item-qty">Qty</span>
+        <span class="order-detail__item-unit">Unit</span>
+        <span class="order-detail__item-subtotal">Subtotal</span>
+      </div>
+      <div class="order-detail__item-row" *ngFor="let item of order.items">
+        <span class="order-detail__item-title">{{ item.gameTitle || item.title || 'Unknown Game' }}</span>
+        <span class="order-detail__item-qty">&#215; {{ item.quantity }}</span>
+        <span class="order-detail__item-unit">{{ item.price | currency:'USD':'symbol':'1.2-2' }}</span>
+        <span class="order-detail__item-subtotal">
+          {{ (item.price * item.quantity) | currency:'USD':'symbol':'1.2-2' }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="order-detail__divider"></div>
+
+    <!-- Total paid -->
+    <div class="order-detail__total">
+      <span class="order-detail__total-label">Total Paid:</span>
+      <span class="order-detail__total-value">
+        {{ order.totalPrice | currency:'USD':'symbol':'1.2-2' }}
+      </span>
+    </div>
+  </ng-container>
+</div>

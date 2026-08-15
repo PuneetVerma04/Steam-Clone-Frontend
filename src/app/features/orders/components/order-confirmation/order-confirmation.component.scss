@@ -1,0 +1,106 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/typography' as *;
+
+.order-confirmation {
+  padding: $spacing-xxxl $spacing-lg $spacing-xl;
+  max-width: 720px;
+  margin: 0 auto;
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-primary; // "Order Confirmed" uses $color-primary per UI-SPEC 5.4
+    margin-bottom: $spacing-md;
+    line-height: 1.2;
+  }
+
+  &__order-id {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text-primary;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__date {
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__item-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid rgba($color-surface-light, 0.4);
+  }
+
+  &__item-title {
+    flex: 1;
+    color: $color-text-primary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__item-qty {
+    flex: 0 0 48px;
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__item-subtotal {
+    flex: 0 0 72px;
+    color: $color-primary;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: $font-body;
+    text-align: right;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__total-label {
+    color: $color-text-secondary;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  &__total-value {
+    color: $color-primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: $font-body;
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__continue-btn {
+    color: $color-secondary;
+    border-color: $color-secondary;
+    min-height: 44px;
+    border-radius: $border-radius-md;
+  }
+}

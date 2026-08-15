@@ -1,0 +1,49 @@
+<div class="auth-page">
+  <img src="assets/images/logo.png" alt="Gray Zone" class="auth-logo" />
+
+  <div class="auth-card">
+    <h2 class="auth-card__title">Sign In</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Email address</mat-label>
+        <input matInput type="email" formControlName="email" autocomplete="email" />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+          Enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="current-password" />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword" [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Inline error banner per D-09 -->
+      <div class="auth-error-banner" *ngIf="serverError" role="alert" aria-live="assertive">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ serverError }}</span>
+      </div>
+
+      <button mat-flat-button type="submit" class="auth-submit-btn"
+              [disabled]="isLoading" [attr.aria-busy]="isLoading">
+        <app-spinner *ngIf="isLoading" [diameter]="20"></app-spinner>
+        <span *ngIf="!isLoading">Log In</span>
+      </button>
+
+    </form>
+
+    <a routerLink="/auth/register" class="auth-secondary-link">
+      Don't have an account? Register &rarr;
+    </a>
+  </div>
+</div>

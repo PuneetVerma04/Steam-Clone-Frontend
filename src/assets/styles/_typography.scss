@@ -1,0 +1,27 @@
+// src/assets/styles/_typography.scss
+// Font variables (Google Fonts loaded in index.html)
+$font-heading: 'Rajdhani', sans-serif;
+$font-body:    'Inter', sans-serif;
+
+// Font weights
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+
+// Base typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: $font-weight-semibold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; font-weight: $font-weight-bold; }
+h2 { font-size: 2rem;   font-weight: $font-weight-bold; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p, span, div, input, button {
+  font-family: $font-body;
+}

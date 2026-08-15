@@ -1,0 +1,62 @@
+<div class="filters" role="search" [formGroup]="filtersForm">
+
+  <!-- Search -->
+  <mat-form-field appearance="outline" class="filters__search">
+    <mat-label>Search games...</mat-label>
+    <input matInput formControlName="q" aria-label="Search games by title" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Genre -->
+  <mat-form-field appearance="outline" class="filters__genre">
+    <mat-label>Genre</mat-label>
+    <mat-select formControlName="genre" aria-label="Filter by genre">
+      <mat-option *ngFor="let genre of genres" [value]="genre">
+        {{ genre || 'All Genres' }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Price fields + inline error grouped so error doesn't push Sort out of row -->
+  <div class="filters__price-group">
+    <div class="filters__price-row">
+      <mat-form-field appearance="outline" class="filters__price">
+        <mat-label>Min $</mat-label>
+        <input matInput type="number" formControlName="minPrice" min="0" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filters__price">
+        <mat-label>Max $</mat-label>
+        <input matInput type="number" formControlName="maxPrice" min="0" />
+      </mat-form-field>
+    </div>
+    <span
+      class="filters__price-error"
+      *ngIf="filtersForm.value.minPrice != null && filtersForm.value.maxPrice != null && filtersForm.value.minPrice > filtersForm.value.maxPrice"
+    >
+      Min price must be less than max price.
+    </span>
+  </div>
+
+  <!-- Sort -->
+  <mat-form-field appearance="outline" class="filters__sort">
+    <mat-label>Sort</mat-label>
+    <mat-select formControlName="sort" aria-label="Sort games">
+      <mat-option value="">Default</mat-option>
+      <mat-option *ngFor="let opt of sortOptions" [value]="opt.value">
+        {{ opt.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Clear Filters -->
+  <button
+    mat-stroked-button
+    class="filters__clear"
+    *ngIf="hasActiveFilters"
+    (click)="clearFilters()"
+    type="button"
+  >
+    Clear Filters
+  </button>
+
+</div>
