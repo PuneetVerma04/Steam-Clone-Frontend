@@ -1,85 +1,38 @@
-# .gitignore for SteamClone.Frontend (Blazor WebAssembly/.NET)
-# Build and publish folders
-bin/
-obj/
+# Compiled output
+/dist
+/tmp
+/out-tsc
 
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+# Angular CLI cache
+/.angular
 
-# VS Code settings
+# Dependencies
+/node_modules
+
+# IDEs and editors
 .vscode/
-
-# Rider settings
 .idea/
 *.sln.iml
 
-# Visual Studio Code workspace
-*.code-workspace
+# Claude Code
+.claude/
+CLAUDE.md
 
 # Logs
 *.log
-
-# NuGet packages
-*.nupkg
-# NuGet restore files
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# Compiled DLLs and assemblies
-*.dll
-*.exe
-*.pdb
-*.cache
-*.mdb
-*.db
-*.bak
-*.swp
-*.swo
-
-# WebAssembly build output
-wwwroot/_framework/
-
-# Ignore excess Bootstrap CSS and JS files
-wwwroot/lib/bootstrap/*.css
-wwwroot/lib/bootstrap/*.js
-wwwroot/lib/bootstrap/**/*.css
-wwwroot/lib/bootstrap/**/*.js
-
-# Static web assets
-SteamClone.Frontend.staticwebassets.*.json
-
-# Scoped CSS output
-obj/**/scopedcss/
+npm-debug.log*
 
 # Temporary files
 *.tmp
 *.temp
+*.bak
+*.swp
+*.swo
 ~$*
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# Others
-*.vspscc
-*.vssscc
-
-# Ignore launchSettings.json if it contains secrets (optional)
-#Properties/launchSettings.json
-/.vs/ProjectEvaluation
-/.vs/Steam Clone Front/CopilotIndices/17.14.1431.25910
-/Docs
-/.vs/Steam Clone Front/FileContentIndex
-/.vs/Steam Clone Front
-/SteamClone.Frontend/wwwroot/lib/bootstrap/dist
-*.csproj
-
-
-#Image files
-*.png
-*.jpg
-*.jpeg
+# Test coverage
+/coverage
