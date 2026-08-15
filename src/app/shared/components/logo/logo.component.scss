@@ -1,0 +1,45 @@
+@use 'assets/styles/variables' as vars;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--logo-gap, #{vars.$spacing-xs});
+}
+
+.logo__mark {
+  width: var(--logo-mark-size, 30px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.logo__orbit {
+  fill: none;
+  stroke: vars.$color-primary;
+  stroke-width: 1.6;
+  opacity: 0.55;
+}
+
+.logo__focus {
+  fill: vars.$color-text-primary;
+}
+
+.logo__node {
+  fill: vars.$color-primary;
+}
+
+.logo__halo {
+  fill: none;
+  stroke: vars.$color-primary;
+  stroke-width: 1;
+  opacity: 0.35;
+}
+
+.logo__wordmark {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: var(--logo-wordmark-size, 1.05rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: vars.$color-text-primary;
+  line-height: 1;
+}

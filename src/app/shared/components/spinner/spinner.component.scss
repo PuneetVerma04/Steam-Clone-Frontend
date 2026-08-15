@@ -4,8 +4,8 @@
   align-items: center;
   padding: 24px;
 
-  // Override Material spinner color to use brand primary (#F55410)
+  // Override Material spinner color to use brand primary (#4D9FFF)
   ::ng-deep .mat-mdc-progress-spinner circle {
-    stroke: #f55410;
+    stroke: #4d9fff;
   }
 }

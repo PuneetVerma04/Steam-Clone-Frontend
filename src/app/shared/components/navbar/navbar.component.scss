@@ -12,7 +12,7 @@
   z-index: 1000;
   height: 64px;
   padding: 0 vars.$spacing-lg;
-  background-color: vars.$color-surface;          // #4B3D37 per D-02
+  background-color: vars.$color-surface;          // #1B2230 per D-02
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: vars.$shadow-md;
 
@@ -23,12 +23,6 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-    }
-
-    &-img {
-      height: 36px;
-      width: auto;
-      display: block;
     }
   }
 
@@ -153,7 +147,7 @@
 
   &__auth-cta {
     background-color: vars.$color-primary !important;
-    color: #ffffff !important;
+    color: vars.$color-on-primary !important;
     font-weight: 600;
   }
 

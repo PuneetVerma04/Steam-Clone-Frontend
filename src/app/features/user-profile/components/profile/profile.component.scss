@@ -65,7 +65,7 @@
 
 .profile-panel__role-pill {
   display: inline-block;
-  background: rgba(245, 84, 16, 0.15);
+  background: rgba(77, 159, 255, 0.15);
   color: $color-tertiary;
   border-radius: $border-radius-sm;
   padding: 2px $spacing-sm;
@@ -95,5 +95,5 @@
 
 .profile-panel__save-btn {
   background-color: $color-primary;
-  color: #fff;
+  color: $color-on-primary;
 }

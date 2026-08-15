@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "gray-zone-frontend": {
+    "aphelion-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -81,10 +81,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gray-zone-frontend:build:production"
+              "buildTarget": "aphelion-frontend:build:production"
             },
             "development": {
-              "buildTarget": "gray-zone-frontend:build:development"
+              "buildTarget": "aphelion-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

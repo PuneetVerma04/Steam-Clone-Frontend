@@ -72,14 +72,14 @@
     display: block;
   }
 
-  // Directional gradient overlay — 135deg per UI-SPEC 5.5
+  // Vertical gradient overlay — matches catalog-hero treatment per UI-SPEC 5.5 (revised)
   &__hero-gradient {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      135deg,
-      rgba(51, 47, 46, 0.9) 0%,
-      rgba(75, 61, 55, 0.5) 50%,
+      to top,
+      rgba(18, 22, 29, 0.95) 0%,
+      rgba(18, 22, 29, 0.4) 50%,
       transparent 100%
     );
     pointer-events: none;
@@ -103,7 +103,7 @@
   &__genre-pill {
     display: inline-block;
     background: $color-primary;
-    color: $color-text-primary;
+    color: $color-on-primary;
     border-radius: $border-radius-sm;
     padding: $spacing-xs $spacing-sm;
     font-size: 0.75rem;
@@ -180,7 +180,7 @@
   // Add to Cart button — full treatment per UI-SPEC 5.5
   &__add-btn {
     background: $color-primary !important;
-    color: $color-text-primary !important;
+    color: $color-on-primary !important;
     font-weight: 700;
     min-height: 48px;
     width: 220px;

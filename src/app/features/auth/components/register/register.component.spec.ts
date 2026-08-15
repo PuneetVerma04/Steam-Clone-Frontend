@@ -126,7 +126,7 @@ describe('RegisterComponent', () => {
     });
     component.onSubmit();
     expect(notificationServiceMock.success).toHaveBeenCalledWith(
-      expect.stringContaining('Welcome to Gray Zone, newuser!')
+      expect.stringContaining('Welcome to Aphelion, newuser!')
     );
   });
 

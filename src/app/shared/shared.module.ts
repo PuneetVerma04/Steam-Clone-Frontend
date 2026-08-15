@@ -13,6 +13,7 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     SpinnerComponent,
     EmptyStateComponent,
     ConfirmationDialogComponent,
+    LogoComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     SpinnerComponent,
     EmptyStateComponent,
     ConfirmationDialogComponent,
+    LogoComponent,
   ],
 })
 export class SharedModule {}

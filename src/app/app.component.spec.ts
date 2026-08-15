@@ -19,6 +19,6 @@ describe('AppComponent', () => {
 
   it('should have title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance.title).toEqual('gray-zone-frontend');
+    expect(fixture.componentInstance.title).toEqual('aphelion-frontend');
   });
 });

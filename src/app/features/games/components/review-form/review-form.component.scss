@@ -41,7 +41,7 @@
 
 .review-form__submit-btn {
   background-color: $color-primary;
-  color: #fff;
+  color: $color-on-primary;
   align-self: flex-end;
 
   @media (max-width: 640px) {

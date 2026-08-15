@@ -1,4 +1,4 @@
-// Angular Material M3 dark theme with earth-tone palette overrides
+// Angular Material M3 dark theme with blue-accent palette overrides (Wireframes v2)
 @use '@angular/material' as mat;
 @use 'assets/styles/theme-colors' as theme;
 @use 'assets/styles/variables' as vars;
@@ -18,12 +18,12 @@ html {
     density: 0,
   ));
 
-  // Override Material system variables for earth-tone palette
-  --mat-sys-background: #332f2e;
-  --mat-sys-surface: #4b3d37;
-  --mat-sys-surface-container: #4b3d37;
-  --mat-sys-surface-container-high: #755243;
-  --mat-sys-surface-container-highest: #755243;
+  // Override Material system variables for the blue palette (Wireframes v2)
+  --mat-sys-background: #12161d;
+  --mat-sys-surface: #1b2230;
+  --mat-sys-surface-container: #1b2230;
+  --mat-sys-surface-container-high: #3a465c;
+  --mat-sys-surface-container-highest: #3a465c;
 }
 
 // Global resets
@@ -81,6 +81,6 @@ a {
 
 // ngx-progressbar custom color (v14+ uses CSS custom properties)
 ng-progress {
-  --ng-progress-color: #F55410;
+  --ng-progress-color: #4D9FFF;
   --ng-progress-height: 3px;
 }

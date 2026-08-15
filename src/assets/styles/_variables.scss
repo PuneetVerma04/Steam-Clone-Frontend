@@ -1,22 +1,26 @@
 // src/assets/styles/_variables.scss
-// Color Palette — Post-Apocalyptic Earth Tones
-$color-background:    #332f2e;
-$color-surface:       #4b3d37;
-$color-surface-light: #755243;
-$color-secondary:     #a05d40;
-$color-tertiary:      #ca5e30;
-$color-primary:       #f55410;
+// Color Palette — Gray Zone Wireframes v2 (Blue)
+@use 'sass:color';
+
+$color-background:    #12161d;
+$color-surface:       #1b2230;
+$color-surface-light: #3a465c;
+$color-primary:       #4d9fff;
+$color-secondary:     color.adjust($color-primary, $lightness: -18%); // deeper blue — back links, ghost borders
+$color-tertiary:      color.adjust($color-primary, $lightness: 12%);  // lighter blue — decorative accents, hover previews
+$color-on-primary:    #0d1117; // dark text/icons on top of a solid $color-primary fill — white text on #4d9fff fails WCAG AA (~2.7:1); this passes (~7:1)
 
 // Text Colors
-$color-text-primary:   #ffffff;
-$color-text-secondary: #cccccc;
-$color-text-muted:     #999999;
+$color-text-primary:   #dfe7f2;
+$color-text-secondary: #8d9cb4;
+$color-text-muted:     #6b7d96;
 
 // Semantic Colors
-$color-success: #4caf50;
-$color-error:   #f44336;
-$color-warning: #ff9800;
-$color-info:    #2196f3;
+$color-success: #5dd694; // mint — Completed status badge
+$color-error:   #ff6b6b;
+$color-warning: #f0b446; // amber — Pending status badge
+$color-info:    #4d9fff; // Refunded status badge reuses accent, per wireframe
+$color-neutral: #8d9cb4; // steel-gray — Cancelled status badge (distinct from $color-error)
 
 // Spacing (8px grid)
 $spacing-xs:   4px;

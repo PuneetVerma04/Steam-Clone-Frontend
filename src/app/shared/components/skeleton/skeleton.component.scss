@@ -1,12 +1,12 @@
-// Per D-08: gradient wave animation, left-to-right, earth-tone palette
-// Colors: $color-surface (#4B3D37) → $color-surface-light (#755243) → $color-surface (#4B3D37)
+// Per D-08: gradient wave animation, left-to-right
+// Colors: $color-surface (#1B2230) → $color-surface-light (#3A465C) → $color-surface (#1B2230)
 .skeleton {
   display: block;
   background: linear-gradient(
     90deg,
-    #4b3d37 25%,
-    #755243 50%,
-    #4b3d37 75%
+    #1b2230 25%,
+    #3a465c 50%,
+    #1b2230 75%
   );
   background-size: 200% 100%;
   animation: gz-shimmer 1.5s infinite linear;

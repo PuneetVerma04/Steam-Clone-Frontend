@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 
-const TOKEN_KEY = 'gz_token';
+const TOKEN_KEY = 'aphelion_token';
 
-interface GzJwtPayload {
+interface AphelionJwtPayload {
   nameid: string;   // userId from .NET ClaimTypes.NameIdentifier — NOT 'sub'
   unique_name: string;
   role: string;
@@ -46,7 +46,7 @@ export class TokenService {
     const token = this.getToken();
     if (!token) return null;
     try {
-      const payload = jwtDecode<GzJwtPayload>(token);
+      const payload = jwtDecode<AphelionJwtPayload>(token);
       return Number(payload.nameid);
     } catch {
       return null;

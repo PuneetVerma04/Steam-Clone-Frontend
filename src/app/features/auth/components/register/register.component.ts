@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
         // D-06: auto-login handled by AuthService.register() which stores token and updates currentUser$
         // D-08: welcome toast
         const username = this.authService.currentUser$.getValue()?.username || 'Player';
-        this.notificationService.success(`Welcome to Gray Zone, ${username}!`);
+        this.notificationService.success(`Welcome to Aphelion, ${username}!`);
         // D-07: redirect to returnUrl or /games
         this.router.navigateByUrl(this.returnUrl);
       },

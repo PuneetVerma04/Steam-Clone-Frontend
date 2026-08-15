@@ -8,7 +8,7 @@ import { register } from 'swiper/element/bundle';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'gray-zone-frontend';
+  title = 'aphelion-frontend';
 
   constructor() {
     register();

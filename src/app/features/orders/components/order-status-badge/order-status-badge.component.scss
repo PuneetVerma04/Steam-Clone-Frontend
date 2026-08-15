@@ -12,7 +12,7 @@
 
   &--completed  { background: $color-success; color: #1a1a1a; }
   &--pending    { background: $color-warning; color: #1a1a1a; }
-  &--failed     { background: $color-error;   color: #ffffff; }
-  &--cancelled  { background: $color-error;   color: #ffffff; }
-  &--refunded   { background: $color-info;    color: #ffffff; }
+  &--failed     { background: $color-error;   color: #1a1a1a; }
+  &--cancelled  { background: $color-neutral; color: #1a1a1a; }
+  &--refunded   { background: $color-info;    color: #1a1a1a; }
 }

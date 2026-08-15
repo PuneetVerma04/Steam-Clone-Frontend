@@ -18,7 +18,7 @@ const MOCK_GAME: Game = {
   imageUrl: 'https://example.com/game.jpg',
   releaseDate: '2024-06-01',
   publisherId: 3,
-  publisherName: 'Gray Zone Studios',
+  publisherName: 'Aphelion Studios',
 };
 
 const MOCK_CART_ITEM: CartItem = {

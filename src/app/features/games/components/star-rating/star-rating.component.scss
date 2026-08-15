@@ -13,11 +13,11 @@
   transition: color 100ms ease;
 
   &--filled {
-    color: $color-primary; // #f55410 — filled star
+    color: $color-primary; // #4d9fff — filled star
   }
 
   &--hover {
-    color: $color-tertiary; // #ca5e30 — hover preview
+    color: $color-tertiary; // ~#8ac0ff — hover preview
   }
 }
 
