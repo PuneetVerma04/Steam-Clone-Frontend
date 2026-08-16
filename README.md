@@ -1,59 +1,68 @@
-# AphelionFrontend
+# Aphelion Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Backend: [Aphelion-Backend](https://github.com/PuneetVerma04/Aphelion-Backend)
 
-## Development server
+Angular frontend for Aphelion, a Steam-like game store web app. This is a full rewrite of an
+earlier Blazor implementation — the Blazor code was removed and this Angular app was built from
+scratch against the same backend API.
 
-To start a local development server, run:
+## Status
 
-```bash
-ng serve
-```
+Actively developed, functional against a local instance of [Aphelion-Backend](https://github.com/PuneetVerma04/Aphelion-Backend).
+Not deployed anywhere publicly yet. Test suite: **28 spec files, 117 `it()` tests** under
+`src/**/*.spec.ts`. No CI pipeline is configured.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Features
 
-## Code scaffolding
+- **Auth** — register/login against the backend, JWT stored client-side, route guards for
+  authenticated and role-gated routes (`Player`, `Publisher`, `Admin`)
+- **Games** — catalog browsing with pagination and filtering
+- **Cart** — add/update items with optimistic UI updates
+- **Orders** — checkout flow and order history
+- **Reviews** — per-game reviews
+- **User profile** — view/update account details
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Tech stack
 
-```bash
-ng generate component component-name
-```
+- **Angular 21** (standalone build tooling via `@angular/build`)
+- **Angular Material** + **Angular CDK** for UI components
+- **RxJS** (`BehaviorSubject`-based state, no NgRx)
+- **Vitest** for unit tests
+- **ESLint** + **Prettier**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Architecture
 
-```bash
-ng generate --help
-```
+Three-tier module structure:
 
-## Building
+- `src/app/core/` — singleton services, HTTP interceptors, route guards (imported once, in the root)
+- `src/app/shared/` — shared, stateless declarations (components, pipes, directives)
+- `src/app/features/` — lazy-loaded feature modules: `auth`, `games`, `cart`, `orders`, `reviews`,
+  `user-profile`
 
-To build the project run:
+## Getting started
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Requires Node.js and npm.
 
 ```bash
-ng e2e
+npm install
+npm start          # ng serve — http://localhost:4200
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The app expects [Aphelion-Backend](https://github.com/PuneetVerma04/Aphelion-Backend) running
+locally; the API base URL is configured in `src/environments/environment.ts`.
 
-## Additional Resources
+### Running tests
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm test           # ng test (Vitest)
+```
+
+### Building
+
+```bash
+npm run build       # production build, output in dist/
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
